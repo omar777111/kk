@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Valentine 💘</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff4e8b, #ff9ecf);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial;
+  overflow: hidden;
+}
+
+h1 {
+  color: white;
+  font-size: 3rem;
+  text-align: center;
+}
+
+button {
+  font-size: 1.5rem;
+  padding: 15px 30px;
+  margin: 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+#yes {
+  background: #ff2e63;
+  color: white;
+}
+
+#no {
+  background: white;
+  color: #ff2e63;
+  position: absolute;
+}
+
+.heart {
+  position: fixed;
+  color: red;
+  font-size: 24px;
+  animation: float 3s linear forwards;
+}
+
+@keyframes float {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-300px); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Will you be my Valentine? 💌</h1>
+
+<button id="yes">YES </button>
+<button id="no">NO </button>
+
+<audio id="sound">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6b8b6e1b0a.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const noBtn = document.getElementById("no");
+
+function escapeBtn() {
+  noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+  noBtn.style.top = Math.random() * (window.innerHeight - 100) + "px";
+}
+
+noBtn.addEventListener("mouseover", escapeBtn);
+noBtn.addEventListener("click", escapeBtn);
+
+document.getElementById("yes").onclick = () => {
+  document.getElementById("sound").play();
+  document.body.innerHTML = " <h1>Luvuuuuuu baby 💕</h1>";
+  hearts();
+};
+
+function hearts() {
+  setInterval(() => {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerText = "❤️";
+    h.style.left = Math.random() * window.innerWidth + "px";
+    h.style.bottom = "0px";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 3000);
+  }, 150);
+}
+</script>
+
+</body>
+</html>
